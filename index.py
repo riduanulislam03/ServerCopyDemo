@@ -1,7 +1,8 @@
-# File: api/index.py
+# File: index.py
 # Designed & Developed by Riduan Codex (@riduanulislam03)
 
-from flask import Flask, request, jsonify
+import json
+from flask import Flask, request, Response
 
 app = Flask(__name__)
 
@@ -9,9 +10,9 @@ app = Flask(__name__)
 def get_nid_info():
     # URL থেকে NID এবং জন্ম তারিখ (dob) সংগ্রহ করা
     nid_number = request.args.get('nid')
-    dob = request.args.get('dob') # উদাহরণ: 2006-01-12
+    dob = request.args.get('dob')
     
-    # আপনার দেওয়া রেসপন্স ডাটা
+    # আপনার দেওয়া রেসপন্স ডাটা (ঠিক এই সিরিয়ালেই শো করবে)
     response_data = {
       "success": True,
       "status": "success",
@@ -50,14 +51,15 @@ def get_nid_info():
       }
     }
 
-    # কেউ যদি লিংক এ নতুন nid বা dob দেয়, তাহলে রেসপন্স এ সেটা পরিবর্তন হয়ে দেখাবে
     if nid_number:
         response_data["data"]["nid"] = nid_number
     if dob:
         response_data["data"]["dateOfBirth"] = dob
 
-    return jsonify(response_data)
+    # json.dumps দিয়ে ডিকশনারির অরিজিনাল সিরিয়াল ঠিক রাখা হচ্ছে এবং বাংলা ফন্ট ঠিক রাখতে ensure_ascii=False দেওয়া হয়েছে
+    json_response = json.dumps(response_data, sort_keys=False, ensure_ascii=False)
+    
+    return Response(json_response, mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
