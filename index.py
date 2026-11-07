@@ -46,7 +46,7 @@ def get_nid_info():
         "permanentAddress": "বাসা/হোল্ডিংঃ ১১৮১৫০, গ্রাম/রাস্তাঃ মৈনারটেক, মৌজা/মহল্লাঃ উত্তরখান, ইউনিয়ন/ওয়ার্ডঃ ওয়ার্ড নং-৪৬, পোষ্ট অফিসঃ উজামপুর, পোষ্ট কোডঃ ১২৩০, উপজেলাঃ উত্তর খান, জেলাঃ ঢাকা, অঞ্চলঃ , বিভাগঃ ঢাকা",
         "address": "বাসা/হোল্ডিং: ১১৮/১৫০, গ্রাম/রাস্তা: মৈনারটেক, উত্তরখান, ডাকঘর: উজামপুর - ১২৩০, উত্তর খান, ঢাকা উত্তর সিটি কর্পোরেশন, ঢাকা",
         "created_at": "2026-08-26 10:06:49",
-        "userIMG": "https://api.svapi.net/admin_img/upload_6a8e9e982f15f5.92595532/img_6a8e9e98a55ef8.07886419.png",
+        "userIMG": "https://shurjoservice.online/sv_photos/img_9ae274afc906fa9344d085ba.jpg",
         "userSign": "https://api.svapi.net/admin_img/upload_6a8e9e982f15f5.92595532/img_6a8e9e998022c3.84451272.png"
       }
     }
