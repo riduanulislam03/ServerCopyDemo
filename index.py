@@ -1,62 +1,88 @@
 # File: index.py
-# Designed & Developed by Riduan Codex (@riduanulislam03)
+# Developed by Riduan Codex (@riduanulislam03)
 
 import json
 from flask import Flask, request, Response
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/api/server/server-copy', methods=['GET'])
 def get_nid_info():
-    # URL থেকে NID এবং জন্ম তারিখ (dob) সংগ্রহ করা
+    # URL থেকে nid, dob এবং secretKey সংগ্রহ করা
     nid_number = request.args.get('nid')
     dob = request.args.get('dob')
+    secret_key = request.args.get('secretKey')
     
-    # আপনার দেওয়া রেসপন্স ডাটা (ঠিক এই সিরিয়ালেই শো করবে)
+    # আপনার দেওয়া ১০০% হুবহু রেসপন্স ডাটা (একই সিরিয়ালে শো করবে)
     response_data = {
       "success": True,
       "status": "success",
       "message": "NID information retrieved successfully",
-      "source": "nid",
+      "source": "api",
       "data": {
-        "id": 1128062,
-        "nid": "6033003267",
-        "pin": "20062699646000465",
-        "formNo": "NIDFN121435517",
-        "sl_no": "0",
-        "father_nid": "8677284344",
-        "mother_nid": "2619676129104",
-        "religion": "Islam",
-        "mobile": "MDE3MDEzNzk0MDg=",
-        "voterNo": "262058698678",
-        "voterArea": "মৈনারটেক (262058)",
-        "education": "৪র্থ শ্রেণী",
-        "occupation": "বেসরকারী চাকুরী",
-        "status": "checked",
-        "nameBangla": "মোহাম্মদ সোহান",
-        "nameEnglish": "MOHAMMAD SOHAN",
-        "dateOfBirth": "2006-01-12",
-        "birthPlace": "ঢাকা",
-        "fatherName": "মোঃ জজ মিয়া",
-        "motherName": "মোসাঃ লাভলী বেগম",
-        "spouseName": "",
+        "name": "রিদুয়ানুল ইসলাম",
+        "nameEn": "RIDUANUL ISLAM",
         "gender": "male",
-        "bloodGroup": "B+",
-        "presentAddress": "বাসা/হোল্ডিংঃ ১১৮১৫০, গ্রাম/রাস্তাঃ মৈনারটেক, মৌজা/মহল্লাঃ উত্তরখান, ইউনিয়ন/ওয়ার্ডঃ ওয়ার্ড নং-৪৬, পোষ্ট অফিসঃ উজামপুর, পোষ্ট কোডঃ ১২৩০, উপজেলাঃ উত্তর খান, জেলাঃ ঢাকা, অঞ্চলঃ ঢাকা, বিভাগঃ ঢাকা",
-        "permanentAddress": "বাসা/হোল্ডিংঃ ১১৮১৫০, গ্রাম/রাস্তাঃ মৈনারটেক, মৌজা/মহল্লাঃ উত্তরখান, ইউনিয়ন/ওয়ার্ডঃ ওয়ার্ড নং-৪৬, পোষ্ট অফিসঃ উজামপুর, পোষ্ট কোডঃ ১২৩০, উপজেলাঃ উত্তর খান, জেলাঃ ঢাকা, অঞ্চলঃ , বিভাগঃ ঢাকা",
-        "address": "বাসা/হোল্ডিং: ১১৮/১৫০, গ্রাম/রাস্তা: মৈনারটেক, উত্তরখান, ডাকঘর: উজামপুর - ১২৩০, উত্তর খান, ঢাকা উত্তর সিটি কর্পোরেশন, ঢাকা",
-        "created_at": "2026-08-26 10:06:49",
-        "userIMG": "https://shurjoservice.online/sv_photos/img_9ae274afc906fa9344d085ba.jpg",
-        "userSign": "https://api.svapi.net/admin_img/upload_6a8e9e982f15f5.92595532/img_6a8e9e998022c3.84451272.png"
+        "father": "মোঃ নুরুল ইসলাম",
+        "mother": "রোকেয়া বেগম ছিদ্দিকা",
+        "nationalId": "8282169989",
+        "pin": "20031528202000161",
+        "oldNid": "1528202000161",
+        "voter_no": "152526531445",
+        "voter_area_code": "152526",
+        "sl_no": "3538",
+        "voterArea": "সোনাকানিয়া (152526)",
+        "occupation": "শ্রমিক",
+        "bloodGroup": "",
+        "birthPlace": "চট্টগ্রাম",
+        "dateOfBirth": "2003-05-09",
+        "birthDay": "শুক্রবার",
+        "age": "২৩ বছর ৬ মাস ১৫ দিন",
+        "presentAddress": "বাসা/হোল্ডিংঃ ৮১৯, গ্রাম/রাস্তাঃ মাইজ পাড়া, সোনাকানিয়া (০২ নং ওয়ার্ড সোনাকানিয়া এলাকা অংশ), ওয়ার্ড নংঃ ০২, মৌজা/মহল্লাঃ সোনাকানিয়া, সিটি কর্পোরেশন/পৌরসভাঃ সাতকানীয়া পৌরসভা, পোস্ট কোডঃ ৪৩৮৬, থানাঃ সাতকানিয়া, উপজেলাঃ সাতকানিয়া, জেলাঃ চট্টগ্রাম, বিভাগঃ চট্টগ্রাম।",
+        "permanentAddress": "বাসা/হোল্ডিংঃ ৮১৯, গ্রাম/রাস্তাঃ মাইজ পাড়া, সোনাকানিয়া (০২ নং ওয়ার্ড সোনাকানিয়া এলাকা অংশ), ওয়ার্ড নংঃ ০২, মৌজা/মহল্লাঃ সোনাকানিয়া, সিটি কর্পোরেশন/পৌরসভাঃ সাতকানীয়া পৌরসভা, পোস্ট কোডঃ ৪৩৮৬, থানাঃ সাতকানিয়া, উপজেলাঃ সাতকানিয়া, জেলাঃ চট্টগ্রাম, বিভাগঃ চট্টগ্রাম।",
+        "permanentAddr": {
+          "division": "চট্টগ্রাম",
+          "district": "চট্টগ্রাম",
+          "upozila": "সাতকানিয়া",
+          "postOffice": "",
+          "postalCode": "",
+          "mouzaOrMoholla": "সোনাকানিয়া",
+          "villageOrRoad": "মাইজ পাড়া, সোনাকানিয়া",
+          "homeOrHolding": "৮১৯",
+          "region": ""
+        },
+        "presentAddr": {
+          "division": "চট্টগ্রাম",
+          "district": "চট্টগ্রাম",
+          "upozila": "সাতকানিয়া",
+          "postOffice": "",
+          "postalCode": "",
+          "mouzaOrMoholla": "সোনাকানিয়া",
+          "villageOrRoad": "মাইজ পাড়া, সোনাকানিয়া",
+          "homeOrHolding": "৮১৯",
+          "region": ""
+        },
+        "photo": "https://api.svapi.icu/images/824e3920c3931b3c38f1a53f6c54a8fc.jpg"
+      },
+      "billing": {
+        "name": "surjo",
+        "today_hit": 141,
+        "today_success": 73,
+        "today_cost": 949,
+        "total_success": 138,
+        "total_bill": 1794,
+        "speed": "1.389s",
+        "charged": 17,
+        "balance": 133
       }
     }
 
     if nid_number:
-        response_data["data"]["nid"] = nid_number
+        response_data["data"]["nationalId"] = nid_number
     if dob:
         response_data["data"]["dateOfBirth"] = dob
 
-    # json.dumps দিয়ে ডিকশনারির অরিজিনাল সিরিয়াল ঠিক রাখা হচ্ছে এবং বাংলা ফন্ট ঠিক রাখতে ensure_ascii=False দেওয়া হয়েছে
+    # json.dumps দিয়ে ডিকশনারির অরিজিনাল সিরিয়াল এবং বাংলা ফন্ট ঠিক রাখা হয়েছে
     json_response = json.dumps(response_data, sort_keys=False, ensure_ascii=False)
     
     return Response(json_response, mimetype='application/json')
